@@ -6,7 +6,7 @@ A Smart Stitch Tool
 #### Linux & Mac
 
 ```sh
-curl -fsSl https://raw.githubusercontent.com/Manas140/seam/main/install.sh | sh
+curl -fsSl https://raw.githubusercontent.com/Manas140/seam/main/install | sh
 ```
 
 #### Windows
