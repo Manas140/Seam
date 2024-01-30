@@ -29,12 +29,12 @@ mv /tmp/seam ~/.local/bin/
 
 case $(basename "$SHELL") in 
   "bash")
-    if (which seam 2>/dev/null); then
+    if (!which seam 2>/dev/null); then
       printf "export PATH=\"\$PATH:$HOME/.local/bin/\"\n" >> ~/.bashrc
     fi
   ;;
   "zsh")
-    if (which seam 2>/dev/null); then
+    if (! which seam 2>/dev/null); then
       printf "export PATH=\"\$PATH:$HOME/.local/bin/\"\n" >> ~/.zshrc
     fi
   ;;
