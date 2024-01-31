@@ -19,22 +19,22 @@ downloadURL=https://github.com/manas140/seam/releases/download/latest/seam-$targ
 
 printf '\033[1;32mINFO:\033[0;0m Downloading\n'
 
-curl --fail --location --progress-bar --output "/tmp/seam" "$downloadURL" || exit 1
+curl --fail --location --progress-bar --output "./seam" "$downloadURL" || exit 1
 
 printf "\n\033[1;32mINFO:\033[0;0m Installing\n"
 
-chmod +x /tmp/seam
-mkdir ~/.local/bin/ 2>/dev/null
-mv /tmp/seam ~/.local/bin/
+chmod +x ./seam
+mkdir -p ~/.local/bin/ 2>/dev/null
+mv ./seam ~/.local/bin/
 
 case $(basename "$SHELL") in 
   "bash")
-    if (!which seam 2>/dev/null); then
+    if ! $( type "seam" >/dev/null); then
       printf "export PATH=\"\$PATH:$HOME/.local/bin/\"\n" >> ~/.bashrc
     fi
   ;;
   "zsh")
-    if (! which seam 2>/dev/null); then
+    if ! $( type "seam" >/dev/null); then
       printf "export PATH=\"\$PATH:$HOME/.local/bin/\"\n" >> ~/.zshrc
     fi
   ;;
