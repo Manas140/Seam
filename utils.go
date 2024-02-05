@@ -40,7 +40,7 @@ func readImage(path string) (image.Image, error) {
 	return img, nil
 }
 
-func saveImage(img image.Image, path string, ext string, wg *sync.WaitGroup) {
+func saveImage(img image.Image, path string, ext string, quality int, wg *sync.WaitGroup) {
 	file, err := os.Create(path)
 	if err != nil {
 		out.Error("Unable to create file '%s'", path)
@@ -51,7 +51,7 @@ func saveImage(img image.Image, path string, ext string, wg *sync.WaitGroup) {
 	case "png":
 		png.Encode(file, img)
 	default:
-		jpeg.Encode(file, img, nil)
+		jpeg.Encode(file, img, &jpeg.Options{Quality: quality})
 	}
 	wg.Done()
 }

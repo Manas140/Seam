@@ -13,10 +13,12 @@ func help() {
     -i input_directory
     -o output_directory (defaults to ./out)
     -r rough_height (defaults to 5000)
-
+    -f output_format [jpeg|jpg|png] (defaults to jpeg)
+    -q jpeg_quality (defaults to 100)
+    
   %s
     -a: use absolute height (defaults to false)
-  
+
   %s
     -n neighbor_count (defaults to 5)
     -s skip_step (defaults to 5)
@@ -26,7 +28,7 @@ func help() {
     https://github.com/manas140/seam/issues
   %s`, col("Seam",
 		34),
-		col("v0.0.1", 2),
+		col("v0.0.2", 2),
 		col("General:", 32),
 		col("Toggle:", 36),
 		col("Advanced:", 35),

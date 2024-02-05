@@ -43,6 +43,7 @@ func main() {
 		format         string = "jpeg"
 		skipStep       int    = 5
 		neighborCount  int    = 5
+		quality        int    = 100
 	)
 
 	// get arguments
@@ -71,6 +72,8 @@ func main() {
 			}
 			i++
 			format = args[i]
+		case "-q":
+			i = checkArgs("quality", args, &quality, i)
 		case "-s":
 			i = checkArgs("skip step", args, &skipStep, i)
 		case "-n":
@@ -165,7 +168,7 @@ func main() {
 	var wg sync.WaitGroup
 	wg.Add(len(slicedImg))
 	for i, img := range slicedImg {
-		go saveImage(img, fmt.Sprintf("%s/%d.%s", outputDir, i, format), format, &wg)
+		go saveImage(img, fmt.Sprintf("%s/%d.%s", outputDir, i, format), format, quality, &wg)
 	}
 	wg.Wait()
 	out.Debug("Took %.2fs", time.Since(start).Seconds())
